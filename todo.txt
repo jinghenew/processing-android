@@ -1,10 +1,21 @@
 0218 android
 X add support for icon-96 for xhdpi icons
 X   https://github.com/processing/processing-android/issues/37
+X switch to onBackPressed() for back button handling
+X   developer.android.com/reference/android/app/Activity.html#onBackPressed()
+X   https://github.com/processing/processing-android/pull/52
+X   https://github.com/processing/processing-android/issues/50
+X sync PVector plus the processing.data package
+X   https://github.com/processing/processing-android/issues/47
+X   https://github.com/processing/processing-android/pull/42
 
 
 _ figure out how to build from Eclipse JDI so we can remove tools.jar and javac
 _   https://github.com/processing/processing/issues/1840
+
+_ temporary files (for sketches and logs) are not deleted
+o   http://code.google.com/p/processing/issues/detail?id=562
+_   https://github.com/processing/processing-android/issues/33
 
 _ requires deleting the app before reinstalling
 _   just fix this like the others

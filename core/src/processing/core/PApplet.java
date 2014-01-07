@@ -819,7 +819,7 @@ public class PApplet extends Activity implements PConstants, Runnable {
       setEGLContextClientVersion(2);
 
       // The renderer can be set only once.
-      setRenderer(PGraphicsOpenGL.pgl.getRenderer());
+      setRenderer(((PGLES)PGraphicsOpenGL.pgl).getRenderer());
       setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
 
       // assign this g to the PApplet
@@ -2740,13 +2740,12 @@ public class PApplet extends Activity implements PConstants, Runnable {
     }
 
     handleMethods("keyEvent", new Object[] { event });
+  }
 
-    // if someone else wants to intercept the key, they should
-    // set key to zero (or something besides the "ESC").
-    if (event.getAction() == KeyEvent.PRESS &&
-        event.getKeyCode() == android.view.KeyEvent.KEYCODE_BACK) {
-      exit();
-    }
+
+  @Override
+  public void onBackPressed() {
+	  exit();
   }
 
 
@@ -2774,14 +2773,6 @@ public class PApplet extends Activity implements PConstants, Runnable {
 
     KeyEvent ke = new KeyEvent(event, event.getEventTime(),
                                keAction, keModifiers, key, keyCode);
-
-    // if someone else wants to intercept the key, they should
-    // set key to zero (or something besides the "ESC").
-    if (action == android.view.KeyEvent.ACTION_DOWN) {
-      if (keyCode == android.view.KeyEvent.KEYCODE_BACK) {
-        exit();
-      }
-    }
 
     postEvent(ke);
   }
